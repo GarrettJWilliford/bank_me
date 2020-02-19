@@ -14,7 +14,7 @@ def driver_init(headless = True):
     return webdriver.Firefox(options = fop)
 
 
-def rbfcu(driver):
+def rbfcu(driver, your_name):
     driver.get('https://www.rbfcu.org/')
     os.system('clear')
     print('<<<<<<<<<<|LOGIN|>>>>>>>>>>')
@@ -40,7 +40,7 @@ def rbfcu(driver):
         driver.quit()
         return
     elements = driver.find_elements_by_class_name('float-left')
-    e = [e for e in elements if 'Garrett' in e.get_attribute('innerHTML')]
+    e = [e for e in elements if your_name in e.get_attribute('innerHTML')]
     while True:
         names = driver.find_elements_by_css_selector('span.f5.rb-semi-black.fw5.fs-block')
         accounts = driver.find_elements_by_css_selector('span.f5.rb-semi-black.fw3.pl2.left-acnt-space.fs-block')
